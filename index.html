@@ -1,792 +1,732 @@
 <!DOCTYPE html>
-<!-- saved from url=(0053)file:///C:/Users/HP/Downloads/worldcup-companion.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WorldCup Companion 2026</title>
-<link href="./WorldCup Companion 2026_files/css2" rel="stylesheet">
+<title>WorldCup Companion 2026 — Survivor</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --green: #1a6b2f;
-    --green-mid: #228b3e;
-    --green-light: #2eb356;
-    --green-glow: #3ddc6e;
-    --white: #f5f9f6;
-    --off-white: #e8f0ea;
-    --gold: #f0c040;
-    --dark: #0d1f12;
-    --card-bg: #ffffff;
-    --locked: #b0c4b8;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Barlow', sans-serif;
-    background: var(--dark);
-    color: var(--white);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* BACKGROUND FIELD TEXTURE */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background:
-      repeating-linear-gradient(
-        180deg,
-        rgba(26,107,47,0.13) 0px,
-        rgba(26,107,47,0.13) 60px,
-        rgba(20,80,35,0.13) 60px,
-        rgba(20,80,35,0.13) 120px
-      );
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* HEADER */
-  header {
-    position: relative;
-    z-index: 10;
-    background: linear-gradient(135deg, #0d2b14 0%, #1a6b2f 60%, #0d2b14 100%);
-    border-bottom: 3px solid var(--green-glow);
-    padding: 0 20px;
-    box-shadow: 0 4px 30px rgba(61,220,110,0.15);
-  }
-
-  .header-inner {
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 0;
-  }
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .logo-ball {
-    width: 44px;
-    height: 44px;
-    background: radial-gradient(circle at 35% 35%, #fff 0%, #e0e0e0 60%, #aaa 100%);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    box-shadow: 0 0 20px rgba(255,255,255,0.3), inset 0 -4px 8px rgba(0,0,0,0.2);
-    animation: spin-slow 8s linear infinite;
-  }
-
-  @keyframes spin-slow {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  .logo-text h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    letter-spacing: 2px;
-    color: var(--white);
-    line-height: 1;
-  }
-
-  .logo-text span {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: var(--green-glow);
-    text-transform: uppercase;
-  }
-
-  .premium-btn {
-    background: linear-gradient(135deg, var(--gold), #e0a800);
-    color: #1a1a00;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    cursor: pointer;
-    text-transform: uppercase;
-    box-shadow: 0 0 20px rgba(240,192,64,0.4);
-    transition: all 0.2s;
-  }
-
-  .premium-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 25px rgba(240,192,64,0.6);
-  }
-
-  /* HERO BANNER */
-  .hero {
-    position: relative;
-    z-index: 5;
-    text-align: center;
-    padding: 40px 20px 30px;
-    background: linear-gradient(180deg, rgba(13,27,18,0) 0%, rgba(13,27,18,0.6) 100%);
-  }
-
-  .hero-tag {
-    display: inline-block;
-    background: rgba(61,220,110,0.15);
-    border: 1px solid var(--green-glow);
-    color: var(--green-glow);
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 12px;
-    letter-spacing: 3px;
-    padding: 5px 16px;
-    border-radius: 20px;
-    margin-bottom: 14px;
-    text-transform: uppercase;
-  }
-
-  .hero h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(36px, 8vw, 64px);
-    letter-spacing: 3px;
-    line-height: 1;
-    margin-bottom: 10px;
-  }
-
-  .hero h2 span { color: var(--green-glow); }
-
-  .hero p {
-    color: #8fb89a;
-    font-size: 15px;
-    max-width: 400px;
-    margin: 0 auto 20px;
-  }
-
-  /* COUNTDOWN */
-  .countdown-bar {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    margin-bottom: 10px;
-  }
-
-  .countdown-unit {
-    text-align: center;
-    background: rgba(26,107,47,0.3);
-    border: 1px solid rgba(61,220,110,0.3);
-    border-radius: 10px;
-    padding: 10px 16px;
-    min-width: 64px;
-  }
-
-  .countdown-unit .num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 32px;
-    color: var(--green-glow);
-    line-height: 1;
-  }
-
-  .countdown-unit .label {
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: #8fb89a;
-    text-transform: uppercase;
-  }
-
-  /* NAV TABS */
-  .nav-tabs {
-    position: relative;
-    z-index: 5;
-    display: flex;
-    overflow-x: auto;
-    gap: 4px;
-    padding: 0 16px 0;
-    max-width: 900px;
-    margin: 0 auto;
-    scrollbar-width: none;
-  }
-
-  .nav-tabs::-webkit-scrollbar { display: none; }
-
-  .tab-btn {
-    flex-shrink: 0;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: #8fb89a;
-    padding: 10px 18px;
-    border-radius: 8px 8px 0 0;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .tab-btn.active {
-    background: rgba(26,107,47,0.5);
-    border-color: var(--green-glow);
-    color: var(--white);
-  }
-
-  .tab-btn .lock-icon {
-    font-size: 10px;
-    color: var(--gold);
-  }
-
-  /* MAIN CONTENT */
-  .main {
-    position: relative;
-    z-index: 5;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 16px 40px;
-  }
-
-  .tab-content { display: none; }
-  .tab-content.active { display: block; }
-
-  /* SECTION CARDS */
-  .section-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(61,220,110,0.15);
-    border-radius: 0 12px 12px 12px;
-    padding: 20px;
-    margin-bottom: 16px;
-  }
-
-  .section-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
-    letter-spacing: 3px;
-    color: var(--green-glow);
-    text-transform: uppercase;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: rgba(61,220,110,0.2);
-  }
-
-  /* MATCH CARDS */
-  .match-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 10px;
-    padding: 14px 16px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: all 0.2s;
-    cursor: pointer;
-  }
-
-  .match-card:hover {
-    border-color: rgba(61,220,110,0.3);
-    background: rgba(26,107,47,0.15);
-  }
-
-  .match-card.live {
-    border-color: rgba(255,80,80,0.5);
-    background: rgba(255,30,30,0.06);
-  }
-
-  .live-dot {
-    width: 8px;
-    height: 8px;
-    background: #ff4444;
-    border-radius: 50%;
-    animation: pulse 1s infinite;
-    display: inline-block;
-    margin-right: 6px;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.3); }
-  }
-
-  .match-team {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 120px;
-  }
-
-  .match-team.right { justify-content: flex-end; text-align: right; }
-
-  .team-flag { font-size: 22px; }
-
-  .team-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-  }
-
-  .match-center {
-    text-align: center;
-    flex: 1;
-  }
-
-  .match-score {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    letter-spacing: 4px;
-    color: var(--white);
-  }
-
-  .match-time {
-    font-size: 11px;
-    color: #8fb89a;
-    letter-spacing: 1px;
-  }
-
-  .match-venue {
-    font-size: 10px;
-    color: #5a7a63;
-    margin-top: 2px;
-  }
-
-  /* STANDINGS TABLE */
-  .standings-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-  }
-
-  .standings-table th {
-    font-family: 'Barlow Condensed', sans-serif;
-    letter-spacing: 2px;
-    font-size: 11px;
-    color: var(--green-glow);
-    text-transform: uppercase;
-    padding: 8px 10px;
-    text-align: left;
-    border-bottom: 1px solid rgba(61,220,110,0.2);
-  }
-
-  .standings-table td {
-    padding: 10px 10px;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    color: #c8dece;
-  }
-
-  .standings-table tr:hover td {
-    background: rgba(26,107,47,0.15);
-  }
-
-  .pos-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 16px;
-    color: var(--green-glow);
-    width: 28px;
-  }
-
-  .qualify-dot {
-    width: 6px;
-    height: 6px;
-    background: var(--green-glow);
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 6px;
-  }
-
-  /* PREMIUM LOCKED OVERLAY */
-  .premium-locked {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-  }
-
-  .premium-locked .lock-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(13,31,18,0.1) 0%, rgba(13,31,18,0.97) 50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    z-index: 10;
-    border-radius: 12px;
-    border: 1px solid rgba(240,192,64,0.3);
-    backdrop-filter: blur(2px);
-  }
-
-  .lock-icon-big { font-size: 36px; }
-
-  .lock-overlay h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 2px;
-    color: var(--gold);
-  }
-
-  .lock-overlay p {
-    font-size: 13px;
-    color: #8fb89a;
-    text-align: center;
-    max-width: 220px;
-  }
-
-  .unlock-btn {
-    background: linear-gradient(135deg, var(--gold), #e0a800);
-    color: #1a1a00;
-    border: none;
-    padding: 12px 28px;
-    border-radius: 8px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    cursor: pointer;
-    text-transform: uppercase;
-    box-shadow: 0 0 20px rgba(240,192,64,0.4);
-    transition: all 0.2s;
-  }
-
-  .unlock-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(240,192,64,0.6);
-  }
-
-  .blurred-content {
-    filter: blur(5px);
-    pointer-events: none;
-    user-select: none;
-  }
-
-  /* PREDICTOR */
-  .predictor-match {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 12px;
-    text-align: center;
-  }
-
-  .predictor-teams {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 16px;
-  }
-
-  .predictor-team {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-  }
-
-  .predictor-team .flag { font-size: 32px; display: block; margin-bottom: 4px; }
-
-  .predict-vs {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 24px;
-    color: #5a7a63;
-  }
-
-  .predict-btns {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-  }
-
-  .predict-btn {
-    flex: 1;
-    background: rgba(26,107,47,0.2);
-    border: 1px solid rgba(61,220,110,0.3);
-    color: var(--white);
-    padding: 10px;
-    border-radius: 8px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  .predict-btn:hover, .predict-btn.selected {
-    background: var(--green-mid);
-    border-color: var(--green-glow);
-    box-shadow: 0 0 15px rgba(61,220,110,0.3);
-  }
-
-  /* WATCH PARTY */
-  .venue-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 10px;
-    padding: 14px 16px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  .venue-card:hover {
-    border-color: rgba(61,220,110,0.3);
-    background: rgba(26,107,47,0.1);
-  }
-
-  .venue-icon {
-    width: 44px;
-    height: 44px;
-    background: rgba(26,107,47,0.3);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    flex-shrink: 0;
-  }
-
-  .venue-info h4 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 2px;
-  }
-
-  .venue-info p {
-    font-size: 12px;
-    color: #8fb89a;
-  }
-
-  .venue-badge {
-    margin-left: auto;
-    background: rgba(61,220,110,0.15);
-    border: 1px solid rgba(61,220,110,0.3);
-    color: var(--green-glow);
-    font-size: 10px;
-    font-family: 'Barlow Condensed', sans-serif;
-    letter-spacing: 1px;
-    padding: 3px 8px;
-    border-radius: 20px;
-    flex-shrink: 0;
-    text-transform: uppercase;
-  }
-
-  .venue-badge.featured {
-    background: rgba(240,192,64,0.15);
-    border-color: rgba(240,192,64,0.4);
-    color: var(--gold);
-  }
-
-  /* TRAVEL GUIDE */
-  .travel-city {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 10px;
-    padding: 14px 16px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .city-flag { font-size: 28px; }
-
-  .city-info h4 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-  }
-
-  .city-info p { font-size: 12px; color: #8fb89a; }
-
-  .city-matches {
-    margin-left: auto;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    color: var(--green-glow);
-  }
-
-  .city-matches span { font-size: 11px; color: #5a7a63; display: block; text-align: center; font-family: 'Barlow', sans-serif; }
-
-  /* MODAL */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.85);
-    z-index: 100;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-
-  .modal-overlay.open { display: flex; }
-
-  .modal {
-    background: linear-gradient(135deg, #0d2b14, #1a4d24);
-    border: 1px solid rgba(61,220,110,0.4);
-    border-radius: 16px;
-    padding: 32px 28px;
-    max-width: 380px;
-    width: 100%;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 0 60px rgba(61,220,110,0.2);
-  }
-
-  .modal-close {
-    position: absolute;
-    top: 14px;
-    right: 18px;
-    background: none;
-    border: none;
-    color: #8fb89a;
-    font-size: 22px;
-    cursor: pointer;
-  }
-
-  .modal h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 32px;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
-    color: var(--gold);
-  }
-
-  .modal p {
-    font-size: 14px;
-    color: #8fb89a;
-    margin-bottom: 24px;
-  }
-
-  .plan-cards {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-
-  .plan-card {
-    flex: 1;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 10px;
-    padding: 16px 10px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  .plan-card.selected, .plan-card:hover {
-    border-color: var(--gold);
-    background: rgba(240,192,64,0.1);
-  }
-
-  .plan-card .price {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 26px;
-    color: var(--gold);
-  }
-
-  .plan-card .period {
-    font-size: 11px;
-    color: #8fb89a;
-    margin-bottom: 8px;
-  }
-
-  .plan-card .plan-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-
-  .modal-cta {
-    width: 100%;
-    background: linear-gradient(135deg, var(--gold), #e0a800);
-    color: #1a1a00;
-    border: none;
-    padding: 14px;
-    border-radius: 10px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: all 0.2s;
-  }
-
-  .modal-cta:hover {
-    box-shadow: 0 6px 25px rgba(240,192,64,0.5);
-    transform: translateY(-2px);
-  }
-
-  .features-list {
-    text-align: left;
-    margin-bottom: 20px;
-    font-size: 13px;
-    color: #8fb89a;
-  }
-
-  .features-list li {
-    padding: 5px 0;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .features-list li::before {
-    content: '✓';
-    color: var(--green-glow);
-    font-weight: bold;
-  }
-
-  /* FREE BADGE */
-  .free-badge {
-    background: rgba(61,220,110,0.15);
-    border: 1px solid rgba(61,220,110,0.3);
-    color: var(--green-glow);
-    font-size: 10px;
-    font-family: 'Barlow Condensed', sans-serif;
-    letter-spacing: 2px;
-    padding: 3px 10px;
-    border-radius: 20px;
-    display: inline-block;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-  }
-
-  /* FOOTER */
-  footer {
-    position: relative;
-    z-index: 5;
-    text-align: center;
-    padding: 20px;
-    border-top: 1px solid rgba(61,220,110,0.1);
-    font-size: 12px;
-    color: #3d5c45;
-  }
+:root {
+  --green: #1a6b2f;
+  --green-mid: #228b3e;
+  --green-light: #2eb356;
+  --green-glow: #3ddc6e;
+  --white: #f0f7f2;
+  --gold: #f0c040;
+  --red: #e63946;
+  --dark: #060c07;
+  --dark2: #080f0a;
+  --card: rgba(255,255,255,0.04);
+  --border: rgba(61,220,110,0.15);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body {
+  font-family: 'Barlow', sans-serif;
+  background: #060c07 !important;
+  background-color: #060c07 !important;
+  color: var(--white);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body::before {
+  content:''; position:fixed; inset:0;
+  background: repeating-linear-gradient(180deg,
+    rgba(26,107,47,0.06) 0px, rgba(26,107,47,0.06) 80px,
+    rgba(8,20,10,0.06) 80px, rgba(8,20,10,0.06) 160px);
+  pointer-events:none; z-index:0;
+}
+
+/* HEADER */
+header {
+  position:relative; z-index:20;
+  background: linear-gradient(135deg, #060e08 0%, #0f3318 50%, #060e08 100%);
+  border-bottom: 2px solid var(--green-glow);
+  box-shadow: 0 4px 40px rgba(61,220,110,0.12);
+  padding: 0 16px;
+}
+.header-inner {
+  max-width:960px; margin:0 auto;
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 14px 0;
+}
+.logo { display:flex; align-items:center; gap:10px; }
+.logo-ball {
+  width:42px; height:42px;
+  background: radial-gradient(circle at 35% 30%, #fff 0%, #ccc 55%, #888 100%);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+  animation: spin 10s linear infinite;
+}
+@keyframes spin { to { transform:rotate(360deg); } }
+.logo-text h1 { font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:2px; line-height:1; }
+.logo-text span { font-family:'Barlow Condensed',sans-serif; font-size:10px; letter-spacing:3px; color:var(--green-glow); text-transform:uppercase; }
+.header-right { display:flex; align-items:center; gap:10px; }
+.user-avatar {
+  width:36px; height:36px;
+  background: linear-gradient(135deg, var(--green-mid), var(--green-glow));
+  border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-size:16px; cursor:pointer;
+  border: 2px solid rgba(61,220,110,0.4);
+}
+.premium-btn {
+  background: linear-gradient(135deg, var(--gold), #c8860a);
+  color:#1a1000; border:none;
+  padding:9px 16px; border-radius:6px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:13px; font-weight:700; letter-spacing:1px;
+  cursor:pointer; text-transform:uppercase;
+  box-shadow:0 0 20px rgba(240,192,64,0.3);
+  transition:all 0.2s;
+}
+.premium-btn:hover { transform:translateY(-1px); box-shadow:0 4px 20px rgba(240,192,64,0.5); }
+
+/* HERO */
+.survivor-hero {
+  position:relative; z-index:5;
+  text-align:center;
+  padding: 36px 20px 24px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(26,107,47,0.25) 0%, #060c07 70%);
+}
+.survivor-tag {
+  display:inline-flex; align-items:center; gap:6px;
+  background: rgba(230,57,70,0.15);
+  border:1px solid rgba(230,57,70,0.4);
+  color:#ff6b75;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:11px; letter-spacing:3px;
+  padding:5px 14px; border-radius:20px;
+  margin-bottom:14px; text-transform:uppercase;
+}
+.survivor-hero h2 {
+  font-family:'Bebas Neue',sans-serif;
+  font-size: clamp(40px,10vw,72px);
+  letter-spacing:3px; line-height:0.95; margin-bottom:6px;
+}
+.survivor-hero h2 .highlight { color:var(--green-glow); }
+.survivor-hero h2 .danger { color:var(--red); }
+.survivor-hero p { color:#7aab87; font-size:14px; max-width:360px; margin:0 auto 20px; }
+
+.countdown { display:flex; justify-content:center; gap:12px; margin-bottom:16px; }
+.cd-unit {
+  background: rgba(26,107,47,0.25);
+  border:1px solid rgba(61,220,110,0.25);
+  border-radius:10px; padding:10px 14px; min-width:60px; text-align:center;
+}
+.cd-num { font-family:'Bebas Neue',sans-serif; font-size:30px; color:var(--green-glow); line-height:1; }
+.cd-label { font-size:9px; letter-spacing:2px; color:#5a8a65; text-transform:uppercase; }
+
+.stats-bar {
+  display:flex; justify-content:center; gap:0;
+  max-width:500px; margin:0 auto;
+  background: rgba(255,255,255,0.03);
+  border:1px solid var(--border);
+  border-radius:12px; overflow:hidden;
+}
+.stat-item { flex:1; padding:14px 10px; text-align:center; border-right:1px solid var(--border); }
+.stat-item:last-child { border-right:none; }
+.stat-num { font-family:'Bebas Neue',sans-serif; font-size:26px; color:var(--green-glow); line-height:1; }
+.stat-label { font-size:10px; letter-spacing:1px; color:#5a8a65; text-transform:uppercase; margin-top:2px; }
+
+/* NAV */
+.nav-tabs {
+  position:relative; z-index:5;
+  display:flex; overflow-x:auto; gap:4px;
+  padding:16px 16px 0;
+  max-width:960px; margin:0 auto;
+  scrollbar-width:none;
+}
+.nav-tabs::-webkit-scrollbar { display:none; }
+.tab-btn {
+  flex-shrink:0;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  color:#7aab87; padding:10px 16px;
+  border-radius:8px 8px 0 0;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:13px; font-weight:600; letter-spacing:1px;
+  cursor:pointer; text-transform:uppercase;
+  transition:all 0.2s; white-space:nowrap;
+}
+.tab-btn.active { background:rgba(26,107,47,0.4); border-color:var(--green-glow); color:var(--white); }
+.lock-badge {
+  font-size:10px; color:var(--gold);
+  background:rgba(240,192,64,0.1);
+  border:1px solid rgba(240,192,64,0.3);
+  border-radius:4px; padding:1px 5px; margin-left:4px;
+}
+
+/* MAIN */
+.main { position:relative; z-index:5; max-width:960px; margin:0 auto; padding:0 16px 60px; }
+.tab-content { display:none; }
+.tab-content.active { display:block; }
+
+.card {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:0 12px 12px 12px;
+  padding:20px; margin-bottom:14px;
+}
+.card-title {
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:12px; letter-spacing:3px;
+  color:var(--green-glow); text-transform:uppercase;
+  margin-bottom:16px;
+  display:flex; align-items:center; gap:8px;
+}
+.card-title::after { content:''; flex:1; height:1px; background:rgba(61,220,110,0.15); }
+.free-pill {
+  display:inline-block;
+  background:rgba(61,220,110,0.1); border:1px solid rgba(61,220,110,0.25);
+  color:var(--green-glow); font-size:10px; font-family:'Barlow Condensed',sans-serif;
+  letter-spacing:2px; padding:3px 10px; border-radius:20px;
+  margin-bottom:12px; text-transform:uppercase;
+}
+
+/* SURVIVOR GAME */
+.round-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
+.round-badge {
+  background: linear-gradient(135deg, var(--red), #a01020);
+  color:#fff; font-family:'Bebas Neue',sans-serif;
+  font-size:14px; letter-spacing:2px; padding:5px 14px; border-radius:6px;
+}
+.survivors-left { font-family:'Barlow Condensed',sans-serif; font-size:13px; color:#7aab87; }
+.survivors-left span { color:var(--green-glow); font-size:18px; font-weight:800; }
+
+.pick-instruction {
+  background: rgba(230,57,70,0.08);
+  border:1px solid rgba(230,57,70,0.2);
+  border-radius:10px; padding:12px 16px; margin-bottom:16px;
+  font-size:13px; color:#ff9a9e;
+  display:flex; align-items:center; gap:10px;
+}
+
+/* TEAM GRID - flag emoji shows properly */
+.team-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-bottom:16px; }
+.team-pick-card {
+  background:rgba(255,255,255,0.03);
+  border:2px solid rgba(255,255,255,0.07);
+  border-radius:12px; padding:18px 12px;
+  text-align:center; cursor:pointer;
+  transition:all 0.25s; position:relative; overflow:hidden;
+}
+.team-pick-card:hover { border-color:rgba(61,220,110,0.4); transform:translateY(-2px); background:rgba(26,107,47,0.12); }
+.team-pick-card.selected {
+  border-color:var(--green-glow);
+  background:rgba(26,107,47,0.25);
+  box-shadow:0 0 20px rgba(61,220,110,0.2);
+}
+.team-pick-card.selected::after {
+  content:'✓ SELECTED'; position:absolute; top:8px; right:8px;
+  color:var(--green-glow); font-size:10px; font-family:'Barlow Condensed',sans-serif;
+  font-weight:700; letter-spacing:1px;
+  background:rgba(61,220,110,0.1); border:1px solid rgba(61,220,110,0.3);
+  padding:2px 6px; border-radius:4px;
+}
+.team-pick-card.eliminated {
+  border-color:rgba(230,57,70,0.3);
+  background:rgba(230,57,70,0.04);
+  opacity:0.45; cursor:not-allowed;
+}
+.team-pick-card.eliminated::after {
+  content:'✗ USED'; position:absolute; top:8px; right:8px;
+  color:var(--red); font-size:10px; font-family:'Barlow Condensed',sans-serif;
+  font-weight:700; letter-spacing:1px;
+  background:rgba(230,57,70,0.1); border:1px solid rgba(230,57,70,0.3);
+  padding:2px 6px; border-radius:4px;
+}
+.pick-flag { font-size:44px; margin-bottom:6px; line-height:1.2; }
+.pick-name { font-family:'Barlow Condensed',sans-serif; font-size:17px; font-weight:700; letter-spacing:0.5px; }
+.pick-odds { font-size:11px; color:#5a8a65; margin-top:3px; }
+.pick-match { font-size:11px; color:#3a6a45; margin-top:2px; }
+
+.confirm-btn {
+  width:100%;
+  background:rgba(255,255,255,0.06);
+  color:#3a6a45; border:1px solid rgba(255,255,255,0.08);
+  padding:15px; border-radius:10px;
+  font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:3px;
+  cursor:not-allowed; transition:all 0.2s;
+}
+.confirm-btn.ready {
+  background: linear-gradient(135deg, var(--green-mid), var(--green-light));
+  color:#fff; border:none; cursor:pointer;
+  box-shadow:0 4px 20px rgba(46,179,86,0.3);
+}
+.confirm-btn.ready:hover { transform:translateY(-2px); box-shadow:0 8px 25px rgba(46,179,86,0.4); }
+
+/* PICK HISTORY */
+.pick-history-item {
+  display:flex; align-items:center; justify-content:space-between;
+  background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06);
+  border-radius:8px; padding:12px 14px; margin-bottom:8px;
+}
+.pick-history-left { display:flex; align-items:center; gap:10px; }
+.pick-history-flag { font-size:26px; }
+.pick-history-info h4 { font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700; }
+.pick-history-info p { font-size:11px; color:#5a8a65; }
+.pick-status {
+  font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:1px; font-weight:700;
+  padding:4px 10px; border-radius:6px; text-transform:uppercase;
+}
+.pick-status.survived { background:rgba(61,220,110,0.15); color:var(--green-glow); border:1px solid rgba(61,220,110,0.3); }
+.pick-status.pending { background:rgba(240,192,64,0.1); color:var(--gold); border:1px solid rgba(240,192,64,0.3); }
+
+/* PRE-TOURNAMENT REGISTRATION BANNER */
+.register-banner {
+  background: linear-gradient(135deg, rgba(240,192,64,0.1), rgba(26,107,47,0.2));
+  border:1px solid rgba(240,192,64,0.3);
+  border-radius:12px; padding:18px; margin-bottom:14px;
+  text-align:center;
+}
+.register-banner h3 {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:22px; letter-spacing:2px; color:var(--gold); margin-bottom:6px;
+}
+.register-banner p { font-size:13px; color:#7aab87; margin-bottom:12px; }
+.register-btn {
+  background: linear-gradient(135deg, var(--gold), #c8860a);
+  color:#1a1000; border:none; padding:12px 28px; border-radius:8px;
+  font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700;
+  letter-spacing:1px; cursor:pointer; text-transform:uppercase;
+  transition:all 0.2s;
+}
+.register-btn:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(240,192,64,0.4); }
+
+/* LEADERBOARD */
+.leaderboard-item {
+  display:flex; align-items:center; gap:12px;
+  padding:12px 14px; margin-bottom:8px;
+  background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06);
+  border-radius:10px; transition:all 0.2s;
+}
+.leaderboard-item:hover { border-color:var(--border); }
+.leaderboard-item.top1 { border-color:rgba(240,192,64,0.4); background:rgba(240,192,64,0.05); }
+.leaderboard-item.top2 { border-color:rgba(200,200,200,0.3); background:rgba(200,200,200,0.03); }
+.leaderboard-item.top3 { border-color:rgba(180,120,60,0.3); background:rgba(180,120,60,0.03); }
+.lb-rank { font-family:'Bebas Neue',sans-serif; font-size:22px; width:30px; text-align:center; color:#3a6a45; }
+.lb-rank.r1 { color:var(--gold); }
+.lb-rank.r2 { color:#c8c8c8; }
+.lb-rank.r3 { color:#b47838; }
+.lb-avatar {
+  width:38px; height:38px; border-radius:50%;
+  background: linear-gradient(135deg, var(--green), var(--green-glow));
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px; flex-shrink:0;
+}
+.lb-info { flex:1; }
+.lb-info h4 { font-family:'Barlow Condensed',sans-serif; font-size:16px; font-weight:700; }
+.lb-info p { font-size:11px; color:#5a8a65; }
+.lb-right { text-align:right; }
+.lb-points { font-family:'Bebas Neue',sans-serif; font-size:22px; color:var(--green-glow); line-height:1; }
+.lb-rounds { font-size:10px; color:#3a6a45; text-transform:uppercase; letter-spacing:1px; }
+
+.lb-you {
+  background:rgba(26,107,47,0.2); border:1px solid rgba(61,220,110,0.3);
+  border-radius:10px; padding:14px; margin-bottom:14px;
+  display:flex; align-items:center; gap:12px;
+}
+.lb-you-label { font-family:'Barlow Condensed',sans-serif; font-size:11px; letter-spacing:2px; color:var(--green-glow); text-transform:uppercase; margin-bottom:2px; }
+
+/* INVITE */
+.invite-box {
+  background: linear-gradient(135deg, rgba(26,107,47,0.3), rgba(13,30,18,0.5));
+  border:1px solid rgba(61,220,110,0.25);
+  border-radius:12px; padding:20px; margin-bottom:14px; text-align:center;
+}
+.invite-box h3 { font-family:'Bebas Neue',sans-serif; font-size:26px; letter-spacing:2px; margin-bottom:6px; }
+.invite-box p { font-size:13px; color:#7aab87; margin-bottom:16px; }
+.invite-link-box { display:flex; gap:8px; margin-bottom:14px; }
+.invite-link {
+  flex:1; background:rgba(0,0,0,0.3); border:1px solid rgba(61,220,110,0.2);
+  border-radius:8px; padding:11px 14px; font-size:13px; color:#7aab87;
+  font-family:'Barlow Condensed',sans-serif; letter-spacing:1px;
+}
+.copy-btn {
+  background:var(--green-mid); color:#fff; border:none; border-radius:8px;
+  padding:11px 16px; font-family:'Barlow Condensed',sans-serif;
+  font-size:13px; font-weight:700; letter-spacing:1px;
+  cursor:pointer; text-transform:uppercase; transition:all 0.2s;
+}
+.copy-btn:hover { background:var(--green-light); }
+.share-btns { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+.share-btn {
+  display:flex; align-items:center; gap:6px;
+  background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
+  color:var(--white); border-radius:8px; padding:10px 16px; cursor:pointer;
+  font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:600;
+  letter-spacing:1px; text-transform:uppercase; transition:all 0.2s;
+}
+.share-btn:hover { background:rgba(255,255,255,0.1); }
+
+.reward-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.reward-card {
+  background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07);
+  border-radius:10px; padding:14px 10px; text-align:center;
+}
+.reward-icon { font-size:26px; margin-bottom:6px; }
+.reward-title { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; margin-bottom:3px; }
+.reward-desc { font-size:11px; color:#5a8a65; }
+
+/* PREMIUM LOCKED */
+.premium-locked { position:relative; border-radius:12px; overflow:hidden; }
+.lock-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(8,15,10,0.2) 0%, rgba(8,15,10,0.96) 45%);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:10px; z-index:10; border-radius:12px;
+  border:1px solid rgba(240,192,64,0.25); backdrop-filter:blur(3px);
+}
+.lock-icon-big { font-size:38px; }
+.lock-overlay h3 { font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:2px; color:var(--gold); }
+.lock-overlay p { font-size:13px; color:#7aab87; text-align:center; max-width:230px; }
+.unlock-btn {
+  background:linear-gradient(135deg, var(--gold), #c8860a);
+  color:#1a1000; border:none; padding:12px 28px; border-radius:8px;
+  font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700;
+  letter-spacing:1px; cursor:pointer; text-transform:uppercase;
+  box-shadow:0 0 20px rgba(240,192,64,0.35); transition:all 0.2s;
+}
+.unlock-btn:hover { transform:translateY(-2px); box-shadow:0 6px 25px rgba(240,192,64,0.55); }
+.blurred { filter:blur(5px); pointer-events:none; user-select:none; }
+
+/* HOW TO PLAY */
+.how-step {
+  display:flex; gap:14px; align-items:flex-start;
+  padding:14px; margin-bottom:10px;
+  background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:10px;
+}
+.step-num {
+  width:36px; height:36px; flex-shrink:0;
+  background:linear-gradient(135deg, var(--green), var(--green-glow));
+  border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-family:'Bebas Neue',sans-serif; font-size:18px;
+}
+.step-info h4 { font-family:'Barlow Condensed',sans-serif; font-size:16px; font-weight:700; margin-bottom:3px; }
+.step-info p { font-size:13px; color:#7aab87; }
+.danger-rule {
+  background:rgba(230,57,70,0.08); border:1px solid rgba(230,57,70,0.2);
+  border-radius:10px; padding:14px 16px; margin-bottom:10px; font-size:13px; color:#ff9a9e;
+}
+.danger-rule strong { color:var(--red); }
+
+/* ===== PREMIUM MODAL - REDESIGNED ===== */
+.modal-overlay {
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,0.92);
+  z-index:100; align-items:center; justify-content:center; padding:20px;
+}
+.modal-overlay.open { display:flex; }
+.modal {
+  background: #060c07;
+  border:1px solid rgba(61,220,110,0.2);
+  border-radius:20px; padding:30px 24px;
+  max-width:400px; width:100%; text-align:center;
+  position:relative;
+  box-shadow:0 0 80px rgba(61,220,110,0.1), 0 0 40px rgba(0,0,0,0.9);
+  animation:slideUp 0.3s ease;
+}
+@keyframes slideUp { from { transform:translateY(30px); opacity:0; } to { transform:translateY(0); opacity:1; } }
+.modal-close {
+  position:absolute; top:14px; right:16px;
+  background:none; border:none; color:#5a8a65;
+  font-size:22px; cursor:pointer; transition:color 0.2s;
+}
+.modal-close:hover { color:var(--white); }
+.modal h2 { font-family:'Bebas Neue',sans-serif; font-size:32px; letter-spacing:2px; color:var(--gold); margin-bottom:4px; }
+.modal > p { font-size:13px; color:#7aab87; margin-bottom:22px; }
+
+/* PLAN CARDS - clear winner design */
+.plan-row { display:flex; gap:12px; margin-bottom:20px; align-items:stretch; }
+
+.plan-card {
+  flex:1; background:rgba(255,255,255,0.04);
+  border:2px solid rgba(255,255,255,0.08);
+  border-radius:14px; padding:18px 12px;
+  cursor:pointer; transition:all 0.2s; position:relative;
+}
+.plan-card:hover { border-color:rgba(255,255,255,0.2); }
+
+/* MONTHLY - deliberately plain */
+.plan-card.monthly { opacity:0.7; }
+.plan-card.monthly .plan-price { font-family:'Bebas Neue',sans-serif; font-size:30px; color:#8ab890; line-height:1; }
+.plan-card.monthly .plan-period { font-size:11px; color:#4a7050; margin-bottom:8px; }
+.plan-card.monthly .plan-name { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:1px; color:#6a9070; text-transform:uppercase; }
+
+/* TOURNAMENT - the obvious winner */
+.plan-card.tournament {
+  border-color:var(--gold);
+  background: linear-gradient(160deg, rgba(240,192,64,0.12), rgba(26,107,47,0.2));
+  box-shadow: 0 0 30px rgba(240,192,64,0.2), inset 0 0 20px rgba(240,192,64,0.05);
+  transform:scale(1.03);
+}
+.best-value-ribbon {
+  position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+  background:linear-gradient(135deg, var(--gold), #c8860a);
+  color:#1a1000; font-family:'Barlow Condensed',sans-serif;
+  font-size:11px; font-weight:800; letter-spacing:2px;
+  padding:4px 14px; border-radius:20px; text-transform:uppercase;
+  white-space:nowrap;
+}
+.plan-card.tournament .plan-price { font-family:'Bebas Neue',sans-serif; font-size:42px; color:var(--gold); line-height:1; }
+.plan-card.tournament .plan-period { font-size:12px; color:#c8a030; margin-bottom:8px; font-weight:600; }
+.plan-card.tournament .plan-name { font-family:'Barlow Condensed',sans-serif; font-size:14px; font-weight:800; letter-spacing:1px; color:var(--gold); text-transform:uppercase; }
+.tournament-perks {
+  margin-top:10px; font-size:11px; color:#b08030;
+  font-family:'Barlow Condensed',sans-serif;
+}
+
+/* SAVINGS BADGE */
+.savings-banner {
+  background:rgba(230,57,70,0.15); border:1px solid rgba(230,57,70,0.3);
+  border-radius:8px; padding:8px 12px; margin-bottom:16px;
+  font-family:'Barlow Condensed',sans-serif; font-size:13px; color:#ff8888;
+  font-weight:700; letter-spacing:1px;
+}
+
+.features-list { text-align:left; margin-bottom:18px; }
+.features-list li {
+  list-style:none; display:flex; align-items:center; gap:8px;
+  font-size:13px; color:#7aab87; padding:5px 0;
+}
+.features-list li::before { content:'✓'; color:var(--green-glow); font-weight:900; }
+.modal-cta {
+  width:100%;
+  background:linear-gradient(135deg, var(--gold), #c8860a);
+  color:#1a1000; border:none; padding:15px; border-radius:10px;
+  font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:2px;
+  cursor:pointer; transition:all 0.2s;
+  box-shadow:0 4px 20px rgba(240,192,64,0.3);
+}
+.modal-cta:hover { box-shadow:0 8px 30px rgba(240,192,64,0.5); transform:translateY(-2px); }
+.modal-footer-note { font-size:11px; color:#3a6a45; margin-top:10px; }
+
+/* ===== PRIZE TIERS ===== */
+.prize-tier {
+  display:flex; align-items:flex-start; gap:12px;
+  border-radius:12px; padding:14px; border:1px solid rgba(255,255,255,0.06);
+}
+.gold-tier { background:linear-gradient(135deg,rgba(240,192,64,0.1),rgba(26,107,47,0.15)); border-color:rgba(240,192,64,0.35); }
+.silver-tier { background:linear-gradient(135deg,rgba(200,200,200,0.07),rgba(26,107,47,0.1)); border-color:rgba(200,200,200,0.25); }
+.bronze-tier { background:linear-gradient(135deg,rgba(180,120,60,0.08),rgba(26,107,47,0.08)); border-color:rgba(180,120,60,0.25); }
+.basic-tier { background:rgba(255,255,255,0.03); border-color:rgba(255,255,255,0.06); }
+.prize-rank { font-size:30px; flex-shrink:0; margin-top:2px; }
+.prize-info { flex:1; }
+.prize-position { font-size:11px; letter-spacing:2px; color:#5a8a65; text-transform:uppercase; font-family:'Barlow Condensed',sans-serif; margin-bottom:2px; }
+.prize-name { font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:2px; color:var(--white); margin-bottom:8px; }
+.prize-items { display:flex; flex-wrap:wrap; gap:5px; }
+.prize-item {
+  background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08);
+  border-radius:20px; padding:3px 10px; font-size:11px; color:#a0c8a8;
+  font-family:'Barlow Condensed',sans-serif; letter-spacing:0.5px; white-space:nowrap;
+}
+.gold-tier .prize-item { background:rgba(240,192,64,0.08); border-color:rgba(240,192,64,0.2); color:var(--gold); }
+.prize-value {
+  text-align:right; flex-shrink:0;
+  font-family:'Bebas Neue',sans-serif; font-size:22px; color:var(--green-glow); line-height:1;
+}
+.prize-value span { display:block; font-family:'Barlow',sans-serif; font-size:10px; color:#5a8a65; font-weight:400; text-transform:uppercase; letter-spacing:1px; }
+
+/* ===== CHAT ===== */
+.chat-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 16px;
+  border-bottom:1px solid rgba(61,220,110,0.1);
+  background:rgba(26,107,47,0.1);
+}
+.chat-header-left { display:flex; align-items:center; gap:10px; }
+.chat-live-dot {
+  width:10px; height:10px; border-radius:50%;
+  background:var(--green-glow);
+  box-shadow:0 0 8px var(--green-glow);
+  animation:blink 1.5s infinite;
+  flex-shrink:0;
+}
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+.chat-title { font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700; }
+.chat-subtitle { font-size:11px; color:#5a8a65; }
+.chat-messages {
+  padding:14px; height:300px; overflow-y:auto;
+  display:flex; flex-direction:column; gap:12px;
+  scrollbar-width:thin; scrollbar-color:rgba(61,220,110,0.2) transparent;
+}
+.chat-messages::-webkit-scrollbar { width:4px; }
+.chat-messages::-webkit-scrollbar-thumb { background:rgba(61,220,110,0.2); border-radius:2px; }
+.chat-msg { display:flex; gap:8px; align-items:flex-start; }
+.chat-msg.me { flex-direction:row-reverse; }
+.msg-avatar {
+  width:34px; height:34px; border-radius:50%; flex-shrink:0;
+  background:rgba(26,107,47,0.3); border:1px solid rgba(61,220,110,0.2);
+  display:flex; align-items:center; justify-content:center; font-size:16px;
+}
+.msg-body { max-width:75%; }
+.chat-msg.me .msg-body { align-items:flex-end; display:flex; flex-direction:column; }
+.msg-name { font-family:'Barlow Condensed',sans-serif; font-size:12px; color:#5a8a65; margin-bottom:3px; }
+.msg-text {
+  background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);
+  border-radius:0 10px 10px 10px; padding:9px 12px; font-size:13px; line-height:1.4; color:var(--white);
+}
+.chat-msg.me .msg-text {
+  background:rgba(26,107,47,0.3); border-color:rgba(61,220,110,0.2);
+  border-radius:10px 0 10px 10px;
+}
+.msg-time { font-size:10px; color:#3a5a40; margin-top:3px; }
+.chat-reactions {
+  display:flex; gap:6px; padding:8px 14px;
+  border-top:1px solid rgba(255,255,255,0.05); overflow-x:auto; scrollbar-width:none;
+}
+.chat-reactions::-webkit-scrollbar { display:none; }
+.reaction-btn {
+  background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);
+  border-radius:20px; padding:5px 10px; font-size:18px;
+  cursor:pointer; transition:all 0.15s; flex-shrink:0;
+}
+.reaction-btn:hover { background:rgba(61,220,110,0.15); border-color:rgba(61,220,110,0.3); transform:scale(1.2); }
+.chat-input-row {
+  display:flex; gap:8px; padding:12px 14px;
+  border-top:1px solid rgba(255,255,255,0.06);
+}
+.chat-input {
+  flex:1; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
+  border-radius:24px; padding:11px 16px; color:var(--white);
+  font-family:'Barlow',sans-serif; font-size:14px; outline:none; transition:border 0.2s;
+}
+.chat-input:focus { border-color:rgba(61,220,110,0.4); }
+.chat-input::placeholder { color:#3a5a40; }
+.chat-send {
+  background:linear-gradient(135deg, var(--green-mid), var(--green-light));
+  color:#fff; border:none; border-radius:24px; padding:11px 18px;
+  font-family:'Barlow Condensed',sans-serif; font-size:14px; font-weight:700;
+  letter-spacing:1px; cursor:pointer; transition:all 0.2s; white-space:nowrap;
+}
+.chat-send:hover { box-shadow:0 0 15px rgba(46,179,86,0.4); }
+
+/* TOAST */
+.toast {
+  position:fixed; bottom:30px; left:50%; transform:translateX(-50%);
+  background:var(--green-mid); color:#fff;
+  font-family:'Barlow Condensed',sans-serif; font-size:14px; letter-spacing:1px;
+  padding:12px 24px; border-radius:30px;
+  z-index:200; opacity:0; pointer-events:none;
+  transition:opacity 0.3s; text-transform:uppercase;
+}
+.toast.show { opacity:1; }
+
+footer {
+  position:relative; z-index:5; text-align:center; padding:20px;
+  border-top:1px solid rgba(61,220,110,0.08); font-size:11px; color:#2a4a30;
+}
+/* ===== AUTH MODAL ===== */
+.auth-overlay {
+  display:flex; position:fixed; inset:0;
+  background:rgba(0,0,0,0.95);
+  z-index:200; align-items:center; justify-content:center; padding:20px;
+}
+.auth-overlay.hidden { display:none; }
+.auth-box {
+  background: linear-gradient(160deg, #060e08, #0d2010);
+  border:1px solid rgba(61,220,110,0.3);
+  border-radius:20px; padding:32px 24px;
+  max-width:360px; width:100%; text-align:center;
+  box-shadow:0 0 80px rgba(61,220,110,0.15);
+  animation:slideUp 0.3s ease;
+}
+.auth-logo { font-size:48px; margin-bottom:8px; }
+.auth-title { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:2px; margin-bottom:4px; }
+.auth-sub { font-size:13px; color:#7aab87; margin-bottom:24px; }
+.auth-tabs { display:flex; gap:0; margin-bottom:20px; background:rgba(255,255,255,0.04); border-radius:8px; padding:3px; }
+.auth-tab {
+  flex:1; padding:9px; border:none; border-radius:6px;
+  font-family:'Barlow Condensed',sans-serif; font-size:14px; font-weight:700;
+  letter-spacing:1px; cursor:pointer; text-transform:uppercase;
+  background:none; color:#5a8a65; transition:all 0.2s;
+}
+.auth-tab.active { background:var(--green-mid); color:#fff; }
+.auth-input {
+  width:100%; background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:10px; padding:13px 16px; margin-bottom:10px;
+  color:var(--white); font-family:'Barlow',sans-serif; font-size:14px;
+  outline:none; transition:border 0.2s; display:block;
+}
+.auth-input:focus { border-color:rgba(61,220,110,0.5); }
+.auth-input::placeholder { color:#3a5a40; }
+.auth-submit {
+  width:100%; margin-top:6px;
+  background:linear-gradient(135deg, var(--green-mid), var(--green-light));
+  color:#fff; border:none; border-radius:10px; padding:14px;
+  font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:2px;
+  cursor:pointer; transition:all 0.2s;
+  box-shadow:0 4px 20px rgba(46,179,86,0.3);
+}
+.auth-submit:hover { transform:translateY(-2px); box-shadow:0 8px 25px rgba(46,179,86,0.4); }
+.auth-error {
+  background:rgba(230,57,70,0.1); border:1px solid rgba(230,57,70,0.3);
+  border-radius:8px; padding:10px; margin-bottom:10px;
+  font-size:12px; color:#ff8888; display:none;
+}
+.auth-error.show { display:block; }
+.auth-divider { font-size:11px; color:#3a5a40; margin:14px 0; letter-spacing:2px; text-transform:uppercase; }
+.google-btn {
+  width:100%; background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.12); border-radius:10px; padding:13px;
+  color:var(--white); font-family:'Barlow Condensed',sans-serif;
+  font-size:14px; font-weight:700; letter-spacing:1px;
+  cursor:pointer; transition:all 0.2s; display:flex; align-items:center; justify-content:center; gap:8px;
+}
+.google-btn:hover { background:rgba(255,255,255,0.1); }
+
+/* USER PROFILE BADGE */
+.user-info-badge {
+  display:flex; align-items:center; gap:6px; cursor:pointer;
+}
+.user-info-badge .uname {
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:13px; font-weight:700; color:var(--green-glow);
+  max-width:80px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
 </style>
 </head>
 <body>
+
+<!-- AUTH MODAL -->
+<div class="auth-overlay" id="auth-overlay">
+  <div class="auth-box">
+    <div class="auth-logo">⚽</div>
+    <div class="auth-title">Join the Game</div>
+    <div class="auth-sub">Create an account to save your picks & climb the leaderboard</div>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" onclick="switchAuth('signup',this)">Sign Up</button>
+      <button class="auth-tab" onclick="switchAuth('login',this)">Log In</button>
+    </div>
+
+    <div id="auth-error" class="auth-error"></div>
+
+    <div id="auth-signup">
+      <input class="auth-input" id="signup-username" type="text" placeholder="Username (e.g. GoalMachine_NG)" maxlength="20">
+      <input class="auth-input" id="signup-email" type="email" placeholder="Email address">
+      <input class="auth-input" id="signup-password" type="password" placeholder="Password (min 6 chars)">
+      <button class="auth-submit" onclick="doSignup()">⚡ CREATE ACCOUNT & PLAY</button>
+    </div>
+
+    <div id="auth-login" style="display:none;">
+      <input class="auth-input" id="login-email" type="email" placeholder="Email address">
+      <input class="auth-input" id="login-password" type="password" placeholder="Password">
+      <button class="auth-submit" onclick="doLogin()">🔓 LOG IN & PLAY</button>
+    </div>
+
+    <div class="auth-divider">or</div>
+    <button class="google-btn" onclick="doGoogle()">
+      <span style="font-size:18px;">🌐</span> Continue with Google
+    </button>
+
+    <div style="font-size:11px; color:#3a5a40; margin-top:16px;">
+      By joining you agree to our terms · Free to play · No credit card needed
+    </div>
+  </div>
+</div>
 
 <!-- HEADER -->
 <header>
@@ -795,203 +735,372 @@
       <div class="logo-ball">⚽</div>
       <div class="logo-text">
         <h1>WorldCup Companion</h1>
-        <span>FIFA World Cup 2026™</span>
+        <span>Survivor Edition · 2026</span>
       </div>
     </div>
-    <button class="premium-btn" onclick="openModal()">⭐ Go Premium</button>
+    <div class="header-right">
+      <div class="user-info-badge" id="user-badge" onclick="showProfile()" style="display:none;">
+        <div class="user-avatar" id="user-avatar-icon">👤</div>
+        <div class="uname" id="user-display-name">Player</div>
+      </div>
+      <button class="premium-btn" id="login-trigger" onclick="document.getElementById('auth-overlay').classList.remove('hidden')" style="background:rgba(255,255,255,0.08); color:#7aab87; box-shadow:none; border:1px solid rgba(255,255,255,0.1);">👤 Login</button>
+      <button class="premium-btn" onclick="openModal()">⭐ Premium</button>
+    </div>
   </div>
 </header>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-tag">🌍 USA · Mexico · Canada</div>
-  <h2>THE WORLD'S<br><span>BIGGEST STAGE</span></h2>
-  <p>Your ultimate companion for FIFA World Cup 2026. 48 teams. 104 matches. One app.</p>
-  <div class="countdown-bar" id="countdown">
-    <div class="countdown-unit"><div class="num" id="cd-days">12</div><div class="label">Days</div></div>
-    <div class="countdown-unit"><div class="num" id="cd-hours">22</div><div class="label">Hours</div></div>
-    <div class="countdown-unit"><div class="num" id="cd-mins">42</div><div class="label">Mins</div></div>
-    <div class="countdown-unit"><div class="num" id="cd-secs">27</div><div class="label">Secs</div></div>
+<div class="survivor-hero">
+  <div class="survivor-tag">💀 Elimination Game · Registration Open</div>
+  <h2>PICK.<br><span class="highlight">SURVIVE.</span><br><span class="danger">OR DIE.</span></h2>
+  <p>Pick one team per round. If they lose or draw — you're eliminated. Last fan standing wins.</p>
+  <div class="countdown">
+    <div class="cd-unit"><div class="cd-num" id="cd-d">12</div><div class="cd-label">Days</div></div>
+    <div class="cd-unit"><div class="cd-num" id="cd-h">--</div><div class="cd-label">Hours</div></div>
+    <div class="cd-unit"><div class="cd-num" id="cd-m">--</div><div class="cd-label">Mins</div></div>
+    <div class="cd-unit"><div class="cd-num" id="cd-s">--</div><div class="cd-label">Secs</div></div>
+  </div>
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-num" id="reg-count">1,204</div><div class="stat-label">Registered</div></div>
+    <div class="stat-item"><div class="stat-num">Jun 11</div><div class="stat-label">Kicks Off</div></div>
+    <div class="stat-item"><div class="stat-num">1</div><div class="stat-label">Winner</div></div>
   </div>
 </div>
 
-<!-- NAV TABS -->
+<!-- TABS -->
 <div class="nav-tabs">
-  <button class="tab-btn active" onclick="switchTab(&#39;schedule&#39;)">📅 Schedule</button>
-  <button class="tab-btn" onclick="switchTab(&#39;standings&#39;)">📊 Standings</button>
-  <button class="tab-btn" onclick="switchTab(&#39;predictor&#39;)">🎯 Predictor <span class="lock-icon">🔒</span></button>
-  <button class="tab-btn" onclick="switchTab(&#39;watchparty&#39;)">🍺 Watch Party</button>
-  <button class="tab-btn" onclick="switchTab(&#39;travel&#39;)">✈️ Travel <span class="lock-icon">🔒</span></button>
+  <button class="tab-btn active" onclick="switchTab('survivor',this)">💀 Survivor</button>
+  <button class="tab-btn" onclick="switchTab('leaderboard',this)">🏆 Leaderboard</button>
+  <button class="tab-btn" onclick="switchTab('invite',this)">👥 Invite & Win</button>
+  <button class="tab-btn" onclick="switchTab('howto',this)">📖 How To Play</button>
+  <button class="tab-btn" onclick="switchTab('schedule',this)">📅 Schedule <span class="lock-badge">PRO</span></button>
+  <button class="tab-btn" onclick="switchTab('chat',this)">💬 Fan Chat</button>
 </div>
 
-<!-- MAIN CONTENT -->
 <div class="main">
 
-  <!-- SCHEDULE TAB -->
-  <div id="tab-schedule" class="tab-content active">
-    <div class="section-card">
-      <div class="free-badge">✓ Free Feature</div>
-      <div class="section-title">Today's Matches</div>
+  <!-- SURVIVOR TAB -->
+  <div id="tab-survivor" class="tab-content active">
 
-      <div class="match-card live">
-        <div class="match-team">
-          <span class="team-flag">🇲🇽</span>
-          <span class="team-name">Mexico</span>
-        </div>
-        <div class="match-center">
-          <div class="match-score">2 · 1</div>
-          <div class="match-time"><span class="live-dot"></span>LIVE 67'</div>
-          <div class="match-venue">Estadio Azteca</div>
-        </div>
-        <div class="match-team right">
-          <span class="team-name">South Africa</span>
-          <span class="team-flag">🇿🇦</span>
-        </div>
-      </div>
-
-      <div class="match-card">
-        <div class="match-team">
-          <span class="team-flag">🇺🇸</span>
-          <span class="team-name">USA</span>
-        </div>
-        <div class="match-center">
-          <div class="match-score">vs</div>
-          <div class="match-time">18:00 ET</div>
-          <div class="match-venue">SoFi Stadium, LA</div>
-        </div>
-        <div class="match-team right">
-          <span class="team-name">Paraguay</span>
-          <span class="team-flag">🇵🇾</span>
-        </div>
-      </div>
-
-      <div class="match-card">
-        <div class="match-team">
-          <span class="team-flag">🇨🇦</span>
-          <span class="team-name">Canada</span>
-        </div>
-        <div class="match-center">
-          <div class="match-score">vs</div>
-          <div class="match-time">21:00 ET</div>
-          <div class="match-venue">BMO Field, Toronto</div>
-        </div>
-        <div class="match-team right">
-          <span class="team-name">Bosnia</span>
-          <span class="team-flag">🇧🇦</span>
-        </div>
-      </div>
+    <!-- PRE-TOURNAMENT REGISTRATION BANNER -->
+    <div class="register-banner">
+      <h3>🏁 Tournament Starts June 11!</h3>
+      <p>Register now to lock in your spot. Picks open when the first match kicks off. <strong style="color:var(--gold)">1,204 fans already registered!</strong></p>
+      <button class="register-btn" onclick="showToast('You\'re registered! 🔥 See you June 11')">⚡ Register Free — Join the Game</button>
     </div>
 
-    <div class="section-card">
-      <div class="section-title">Upcoming — Group Stage</div>
-      <div class="match-card">
-        <div class="match-team"><span class="team-flag">🇧🇷</span><span class="team-name">Brazil</span></div>
-        <div class="match-center"><div class="match-score">vs</div><div class="match-time">Jun 13 · 15:00 ET</div><div class="match-venue">MetLife Stadium, NJ</div></div>
-        <div class="match-team right"><span class="team-name">Croatia</span><span class="team-flag">🇭🇷</span></div>
+    <div class="card">
+      <div class="free-pill">✓ Free to Play</div>
+      <div class="round-header">
+        <div class="round-badge">⏳ Round 1 — Opens Jun 11</div>
+        <div class="survivors-left"><span id="surv-num">1,204</span> registered</div>
       </div>
-      <div class="match-card">
-        <div class="match-team"><span class="team-flag">🇩🇪</span><span class="team-name">Germany</span></div>
-        <div class="match-center"><div class="match-score">vs</div><div class="match-time">Jun 13 · 18:00 ET</div><div class="match-venue">AT&amp;T Stadium, Dallas</div></div>
-        <div class="match-team right"><span class="team-name">Japan</span><span class="team-flag">🇯🇵</span></div>
+
+      <div class="pick-instruction">
+        🔒 Picks unlock on June 11 when Mexico vs South Africa kicks off. Register now to get notified!
       </div>
-      <div class="match-card">
-        <div class="match-team"><span class="team-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="team-name">England</span></div>
-        <div class="match-center"><div class="match-score">vs</div><div class="match-time">Jun 14 · 12:00 ET</div><div class="match-venue">Gillette Stadium, Boston</div></div>
-        <div class="match-team right"><span class="team-name">Serbia</span><span class="team-flag">🇷🇸</span></div>
+
+      <div class="card-title">Preview — Teams You Can Pick From</div>
+
+      <div class="team-grid">
+        <div class="team-pick-card" onclick="showToast('Picks open June 11 — Register to get notified! 🔥')">
+          <div class="pick-flag">🇧🇷</div>
+          <div class="pick-name">Brazil</div>
+          <div class="pick-odds">Tournament Favourite</div>
+          <div class="pick-match">vs Croatia · Jun 13</div>
+        </div>
+        <div class="team-pick-card" onclick="showToast('Picks open June 11 — Register to get notified! 🔥')">
+          <div class="pick-flag">🇩🇪</div>
+          <div class="pick-name">Germany</div>
+          <div class="pick-odds">Strong Pick</div>
+          <div class="pick-match">vs Japan · Jun 13</div>
+        </div>
+        <div class="team-pick-card" onclick="showToast('Picks open June 11 — Register to get notified! 🔥')">
+          <div class="pick-flag">🇪🇸</div>
+          <div class="pick-name">Spain</div>
+          <div class="pick-odds">Tournament Favourite</div>
+          <div class="pick-match">vs Morocco · Jun 14</div>
+        </div>
+        <div class="team-pick-card" onclick="showToast('Picks open June 11 — Register to get notified! 🔥')">
+          <div class="pick-flag">🇫🇷</div>
+          <div class="pick-name">France</div>
+          <div class="pick-odds">Top Pick</div>
+          <div class="pick-match">vs Poland · Jun 14</div>
+        </div>
+        <div class="team-pick-card" onclick="showToast('Picks open June 11 — Register to get notified! 🔥')">
+          <div class="pick-flag">🇦🇷</div>
+          <div class="pick-name">Argentina</div>
+          <div class="pick-odds">Defending Champ</div>
+          <div class="pick-match">vs Chile · Jun 15</div>
+        </div>
+        <div class="team-pick-card" onclick="showToast('Picks open June 11 — Register to get notified! 🔥')">
+          <div class="pick-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
+          <div class="pick-name">England</div>
+          <div class="pick-odds">Risky Pick</div>
+          <div class="pick-match">vs Serbia · Jun 14</div>
+        </div>
       </div>
+
+      <button class="confirm-btn" onclick="showToast('Picks open June 11! Register to play 🔥')">
+        🔒 PICKS UNLOCK JUNE 11 — REGISTER NOW
+      </button>
     </div>
   </div>
 
-  <!-- STANDINGS TAB -->
-  <div id="tab-standings" class="tab-content">
-    <div class="section-card">
-      <div class="free-badge">✓ Free Feature</div>
-      <div class="section-title">Group A Standings</div>
-      <table class="standings-table">
-        <tbody><tr>
-          <th>#</th><th>Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>Pts</th>
-        </tr>
-        <tr>
-          <td class="pos-num">1</td>
-          <td><span class="qualify-dot"></span>🇲🇽 Mexico</td>
-          <td>1</td><td>1</td><td>0</td><td>0</td><td><strong>3</strong></td>
-        </tr>
-        <tr>
-          <td class="pos-num">2</td>
-          <td><span class="qualify-dot"></span>🇿🇦 S. Africa</td>
-          <td>1</td><td>0</td><td>0</td><td>1</td><td><strong>0</strong></td>
-        </tr>
-        <tr>
-          <td class="pos-num">3</td>
-          <td>🇧🇪 Belgium</td>
-          <td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
-        </tr>
-        <tr>
-          <td class="pos-num">4</td>
-          <td>🇸🇦 Saudi Arabia</td>
-          <td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
-        </tr>
-      </tbody></table>
+  <!-- LEADERBOARD TAB -->
+  <div id="tab-leaderboard" class="tab-content">
+    <div class="card">
+      <div class="free-pill">✓ Free Feature</div>
+      <div class="card-title">🏆 Registration Leaderboard</div>
+
+      <!-- INFO BANNER -->
+      <div style="background:rgba(61,220,110,0.08); border:1px solid rgba(61,220,110,0.2); border-radius:10px; padding:12px 14px; margin-bottom:14px; font-size:13px; color:#7aab87;">
+        📋 Tournament hasn't started yet — this shows who registered first. <strong style="color:var(--green-glow)">Survival points start June 11!</strong>
+      </div>
+
+      <div class="lb-you">
+        <div class="lb-avatar">👤</div>
+        <div style="flex:1">
+          <div class="lb-you-label">Your Position</div>
+          <div style="font-family:'Barlow Condensed',sans-serif; font-size:18px; font-weight:700;">You · #247 registered</div>
+          <div style="font-size:12px; color:#5a8a65;">Ready for June 11 🟢</div>
+        </div>
+        <div style="text-align:right">
+          <div class="lb-points">247</div>
+          <div class="lb-rounds">rank</div>
+        </div>
+      </div>
+
+      <div class="leaderboard-item top1">
+        <div class="lb-rank r1">🥇</div>
+        <div class="lb-avatar">🦁</div>
+        <div class="lb-info"><h4>FootballKing_NG</h4><p>Nigeria 🇳🇬 · First to register</p></div>
+        <div class="lb-right"><div class="lb-points">#1</div><div class="lb-rounds">registered</div></div>
+      </div>
+      <div class="leaderboard-item top2">
+        <div class="lb-rank r2">🥈</div>
+        <div class="lb-avatar">⚡</div>
+        <div class="lb-info"><h4>SoccerPro_BR</h4><p>Brazil 🇧🇷 · 3 friends invited</p></div>
+        <div class="lb-right"><div class="lb-points">#2</div><div class="lb-rounds">registered</div></div>
+      </div>
+      <div class="leaderboard-item top3">
+        <div class="lb-rank r3">🥉</div>
+        <div class="lb-avatar">🔥</div>
+        <div class="lb-info"><h4>FutbolFan_MX</h4><p>Mexico 🇲🇽 · 5 friends invited</p></div>
+        <div class="lb-right"><div class="lb-points">#3</div><div class="lb-rounds">registered</div></div>
+      </div>
+      <div class="leaderboard-item">
+        <div class="lb-rank">4</div>
+        <div class="lb-avatar">🎯</div>
+        <div class="lb-info"><h4>TacticsGuru_UK</h4><p>England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 · 2 friends invited</p></div>
+        <div class="lb-right"><div class="lb-points">#4</div><div class="lb-rounds">registered</div></div>
+      </div>
+      <div class="leaderboard-item">
+        <div class="lb-rank">5</div>
+        <div class="lb-avatar">🌟</div>
+        <div class="lb-info"><h4>GoalMachine_DE</h4><p>Germany 🇩🇪 · Ready to play</p></div>
+        <div class="lb-right"><div class="lb-points">#5</div><div class="lb-rounds">registered</div></div>
+      </div>
     </div>
 
-    <div class="section-card">
-      <div class="section-title">Group B Standings</div>
-      <table class="standings-table">
-        <tbody><tr>
-          <th>#</th><th>Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>Pts</th>
-        </tr>
-        <tr>
-          <td class="pos-num">1</td>
-          <td><span class="qualify-dot"></span>🇧🇷 Brazil</td>
-          <td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
-        </tr>
-        <tr>
-          <td class="pos-num">2</td>
-          <td><span class="qualify-dot"></span>🇨🇦 Canada</td>
-          <td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
-        </tr>
-        <tr>
-          <td class="pos-num">3</td>
-          <td>🇭🇷 Croatia</td>
-          <td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
-        </tr>
-        <tr>
-          <td class="pos-num">4</td>
-          <td>🇧🇦 Bosnia</td>
-          <td>0</td><td>0</td><td>0</td><td>0</td><td><strong>0</strong></td>
-        </tr>
-      </tbody></table>
-    </div>
-  </div>
-
-  <!-- PREDICTOR TAB (PREMIUM) -->
-  <div id="tab-predictor" class="tab-content">
     <div class="premium-locked">
-      <div class="blurred-content">
-        <div class="section-card">
-          <div class="section-title">Match Predictor</div>
-          <div class="predictor-match">
-            <div class="predictor-teams">
-              <div class="predictor-team"><span class="flag">🇧🇷</span>Brazil</div>
-              <div class="predict-vs">VS</div>
-              <div class="predictor-team"><span class="flag">🇩🇪</span>Germany</div>
-            </div>
-            <div class="predict-btns">
-              <button class="predict-btn">Brazil Win</button>
-              <button class="predict-btn">Draw</button>
-              <button class="predict-btn">Germany Win</button>
+      <div class="blurred">
+        <div class="card">
+          <div class="card-title">👥 Friend Leagues</div>
+          <div class="leaderboard-item">
+            <div class="lb-rank r1">🥇</div>
+            <div class="lb-avatar">😎</div>
+            <div class="lb-info"><h4>Your Friend</h4><p>Registered & ready</p></div>
+            <div class="lb-right"><div class="lb-points">#1</div><div class="lb-rounds">in league</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="lock-overlay">
+        <div class="lock-icon-big">🔒</div>
+        <h3>Friend Leagues</h3>
+        <p>Create private leagues and compete directly against your friends</p>
+        <button class="unlock-btn" onclick="openModal()">Unlock Premium</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- INVITE TAB -->
+  <div id="tab-invite" class="tab-content">
+    <div class="invite-box">
+      <div style="font-size:48px; margin-bottom:10px;">🎁</div>
+      <h3>INVITE FRIENDS<br>EARN REWARDS</h3>
+      <p>Every friend who registers earns you bonus survival points when the game starts!</p>
+      <div class="invite-link-box">
+        <div class="invite-link">wccompanion.app/join/YOURCODE</div>
+        <button class="copy-btn" onclick="copyLink()">Copy</button>
+      </div>
+      <div class="share-btns">
+        <button class="share-btn">📱 WhatsApp</button>
+        <button class="share-btn">🐦 Twitter/X</button>
+        <button class="share-btn">📸 Instagram</button>
+        <button class="share-btn">📨 Telegram</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🎁 Referral Rewards</div>
+      <div class="reward-grid">
+        <div class="reward-card">
+          <div class="reward-icon">1️⃣</div>
+          <div class="reward-title">1 Friend</div>
+          <div class="reward-desc">+50 bonus survival points</div>
+        </div>
+        <div class="reward-card">
+          <div class="reward-icon">5️⃣</div>
+          <div class="reward-title">5 Friends</div>
+          <div class="reward-desc">1 Month Free Premium</div>
+        </div>
+        <div class="reward-card">
+          <div class="reward-icon">🔟</div>
+          <div class="reward-title">10 Friends</div>
+          <div class="reward-desc">Full Tournament Premium Free</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIZES SECTION -->
+    <div class="card" style="padding:0; overflow:hidden;">
+
+      <!-- HEADER -->
+      <div style="background:linear-gradient(135deg,rgba(240,192,64,0.15),rgba(26,107,47,0.2)); padding:20px; text-align:center; border-bottom:1px solid rgba(240,192,64,0.2);">
+        <div style="font-size:14px; font-family:'Barlow Condensed',sans-serif; letter-spacing:3px; color:var(--gold); text-transform:uppercase; margin-bottom:6px;">🏆 Win Real Prizes</div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:30px; letter-spacing:2px; margin-bottom:4px;">SURVIVOR MERCH REWARDS</div>
+        <div style="font-size:13px; color:#7aab87;">Top survivors win real football merch. No cash. No gambling. Just glory.</div>
+      </div>
+
+      <div style="padding:16px; display:flex; flex-direction:column; gap:12px;">
+
+        <!-- 1ST PLACE -->
+        <div class="prize-tier gold-tier">
+          <div class="prize-rank">🥇</div>
+          <div class="prize-info">
+            <div class="prize-position">Last Fan Standing</div>
+            <div class="prize-name">THE ULTIMATE PACK</div>
+            <div class="prize-items">
+              <span class="prize-item">👕 Official Team Jersey</span>
+              <span class="prize-item">🃏 Country Card Set</span>
+              <span class="prize-item">⚽ Signed Football</span>
+              <span class="prize-item">🧢 World Cup Cap</span>
+              <span class="prize-item">👑 1 Year Premium Free</span>
             </div>
           </div>
-          <div class="predictor-match">
-            <div class="predictor-teams">
-              <div class="predictor-team"><span class="flag">🇦🇷</span>Argentina</div>
-              <div class="predict-vs">VS</div>
-              <div class="predictor-team"><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>England</div>
+          <div class="prize-value">$150+<span>value</span></div>
+        </div>
+
+        <!-- 2ND PLACE -->
+        <div class="prize-tier silver-tier">
+          <div class="prize-rank">🥈</div>
+          <div class="prize-info">
+            <div class="prize-position">Top 3 Survivors</div>
+            <div class="prize-name">CHAMPION PACK</div>
+            <div class="prize-items">
+              <span class="prize-item">👕 Official Team Jersey</span>
+              <span class="prize-item">🃏 Country Card Set</span>
+              <span class="prize-item">🧢 World Cup Cap</span>
+              <span class="prize-item">⭐ 6 Months Premium</span>
             </div>
-            <div class="predict-btns">
-              <button class="predict-btn">Argentina Win</button>
-              <button class="predict-btn">Draw</button>
-              <button class="predict-btn">England Win</button>
+          </div>
+          <div class="prize-value">$80+<span>value</span></div>
+        </div>
+
+        <!-- 3RD PLACE -->
+        <div class="prize-tier bronze-tier">
+          <div class="prize-rank">🥉</div>
+          <div class="prize-info">
+            <div class="prize-position">Top 4–10</div>
+            <div class="prize-name">FAN PACK</div>
+            <div class="prize-items">
+              <span class="prize-item">🃏 Country Card Set</span>
+              <span class="prize-item">🧢 World Cup Cap</span>
+              <span class="prize-item">⭐ 3 Months Premium</span>
+            </div>
+          </div>
+          <div class="prize-value">$40+<span>value</span></div>
+        </div>
+
+        <!-- TOP 50 -->
+        <div class="prize-tier basic-tier">
+          <div class="prize-rank">🎖️</div>
+          <div class="prize-info">
+            <div class="prize-position">Top 11–50</div>
+            <div class="prize-name">DIGITAL REWARDS</div>
+            <div class="prize-items">
+              <span class="prize-item">🃏 Digital Card Pack</span>
+              <span class="prize-item">⭐ 1 Month Premium</span>
+              <span class="prize-item">🏅 Survivor Badge</span>
+            </div>
+          </div>
+          <div class="prize-value">FREE<span>premium</span></div>
+        </div>
+
+      </div>
+
+      <!-- SPONSOR CALLOUT -->
+      <div style="background:rgba(61,220,110,0.05); border-top:1px solid rgba(61,220,110,0.1); padding:14px 16px; text-align:center;">
+        <div style="font-size:11px; color:#5a8a65; font-family:'Barlow Condensed',sans-serif; letter-spacing:2px; text-transform:uppercase;">🤝 Prizes Sponsored By Our Partners</div>
+        <div style="font-size:12px; color:#3a5a40; margin-top:4px;">Want to sponsor a prize? Contact us · sponsor@wccompanion.app</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW TO PLAY TAB -->
+  <div id="tab-howto" class="tab-content">
+    <div class="card">
+      <div class="card-title">📖 How To Play</div>
+      <div class="how-step">
+        <div class="step-num">1</div>
+        <div class="step-info"><h4>Register Free</h4><p>Sign up and join thousands of fans waiting for June 11 kickoff</p></div>
+      </div>
+      <div class="how-step">
+        <div class="step-num">2</div>
+        <div class="step-info"><h4>Pick ONE Team Per Round</h4><p>Before each matchday, select one team you think will WIN their match</p></div>
+      </div>
+      <div class="how-step">
+        <div class="step-num">3</div>
+        <div class="step-info"><h4>Survive or Get Eliminated</h4><p>Your team wins → you survive and earn points. Draw or loss → you're out!</p></div>
+      </div>
+      <div class="how-step">
+        <div class="step-num">4</div>
+        <div class="step-info"><h4>Can't Pick Same Team Twice</h4><p>Once you use a team, they're gone from your options. Choose wisely every round!</p></div>
+      </div>
+      <div class="how-step">
+        <div class="step-num">5</div>
+        <div class="step-info"><h4>Climb the Leaderboard</h4><p>Earn bonus points for inviting friends, early picks, and survival streaks</p></div>
+      </div>
+      <div class="how-step">
+        <div class="step-num">6</div>
+        <div class="step-info"><h4>Last Fan Standing Wins 👑</h4><p>The final survivor when the tournament ends claims the grand prize!</p></div>
+      </div>
+      <div style="margin-top:16px;">
+        <div class="danger-rule">⚠️ <strong>Important:</strong> Picks lock 1 hour before kickoff. Don't forget to pick or you're auto-eliminated!</div>
+        <div class="danger-rule">⚠️ <strong>Remember:</strong> A DRAW counts as elimination — only a WIN saves you!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCHEDULE TAB - PREMIUM -->
+  <div id="tab-schedule" class="tab-content">
+    <div class="premium-locked">
+      <div class="blurred">
+        <div class="card">
+          <div class="card-title">Full Match Schedule</div>
+          <div style="padding:10px 0;">
+            <div style="background:rgba(255,255,255,0.03); border-radius:10px; padding:14px; margin-bottom:10px;">
+              <div style="font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700;">🇲🇽 Mexico vs 🇿🇦 South Africa</div>
+              <div style="font-size:12px; color:#5a8a65;">Jun 11 · 19:00 · Estadio Azteca</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.03); border-radius:10px; padding:14px; margin-bottom:10px;">
+              <div style="font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700;">🇺🇸 USA vs 🇵🇾 Paraguay</div>
+              <div style="font-size:12px; color:#5a8a65;">Jun 12 · 18:00 · SoFi Stadium</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.03); border-radius:10px; padding:14px;">
+              <div style="font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700;">🇧🇷 Brazil vs 🇭🇷 Croatia</div>
+              <div style="font-size:12px; color:#5a8a65;">Jun 13 · 15:00 · MetLife Stadium</div>
             </div>
           </div>
         </div>
@@ -999,191 +1108,508 @@
       <div class="lock-overlay">
         <div class="lock-icon-big">🔒</div>
         <h3>Premium Feature</h3>
-        <p>Predict match outcomes, compete on leaderboards &amp; win bragging rights with friends</p>
+        <p>Get the full 104-match schedule, live scores & match alerts</p>
         <button class="unlock-btn" onclick="openModal()">Unlock for $2.99</button>
       </div>
     </div>
   </div>
 
-  <!-- WATCH PARTY TAB -->
-  <div id="tab-watchparty" class="tab-content">
-    <div class="section-card">
-      <div class="free-badge">✓ Free Feature</div>
-      <div class="section-title">Watch Party Venues Near You</div>
+  <!-- CHAT TAB -->
+  <div id="tab-chat" class="tab-content">
 
-      <div class="venue-card">
-        <div class="venue-icon">🍺</div>
-        <div class="venue-info">
-          <h4>The Pitch Sports Bar</h4>
-          <p>0.4 mi away · Opens 5PM · All matches</p>
+    <!-- GLOBAL CHAT - FREE -->
+    <div class="card" style="padding:0; overflow:hidden;">
+      <div class="chat-header">
+        <div class="chat-header-left">
+          <div class="chat-live-dot"></div>
+          <div>
+            <div class="chat-title">🌍 Global Fan Chat</div>
+            <div class="chat-subtitle">1,204 fans online · Free for everyone</div>
+          </div>
         </div>
-        <div class="venue-badge featured">⭐ Featured</div>
+        <div class="free-pill" style="margin:0;">✓ Free</div>
       </div>
 
-      <div class="venue-card">
-        <div class="venue-icon">🏟️</div>
-        <div class="venue-info">
-          <h4>Soccer Fan Zone — City Park</h4>
-          <p>1.1 mi away · Free entry · Big screen</p>
+      <!-- MESSAGES -->
+      <div class="chat-messages" id="chat-messages">
+        <div class="chat-msg other">
+          <div class="msg-avatar">🦁</div>
+          <div class="msg-body">
+            <div class="msg-name">FootballKing_NG <span class="msg-flag">🇳🇬</span></div>
+            <div class="msg-text">Brazil is gonna win this whole thing, picking them Round 1 🇧🇷🔥</div>
+            <div class="msg-time">2m ago</div>
+          </div>
         </div>
-        <div class="venue-badge">Free</div>
+        <div class="chat-msg other">
+          <div class="msg-avatar">⚡</div>
+          <div class="msg-body">
+            <div class="msg-name">SoccerPro_BR <span class="msg-flag">🇧🇷</span></div>
+            <div class="msg-text">Don't waste Brazil early! Save them for the knockouts 👀</div>
+            <div class="msg-time">1m ago</div>
+          </div>
+        </div>
+        <div class="chat-msg other">
+          <div class="msg-avatar">🔥</div>
+          <div class="msg-body">
+            <div class="msg-name">FutbolFan_MX <span class="msg-flag">🇲🇽</span></div>
+            <div class="msg-text">Mexico opening match vibes!! Who's picking them? 🙌</div>
+            <div class="msg-time">just now</div>
+          </div>
+        </div>
+        <div class="chat-msg other">
+          <div class="msg-avatar">🎯</div>
+          <div class="msg-body">
+            <div class="msg-name">TacticsGuru_UK <span class="msg-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span></div>
+            <div class="msg-text">England fans where you at?? This is our year 😤</div>
+            <div class="msg-time">just now</div>
+          </div>
+        </div>
       </div>
 
-      <div class="venue-card">
-        <div class="venue-icon">🍕</div>
-        <div class="venue-info">
-          <h4>Mundial Pizza &amp; Bar</h4>
-          <p>1.8 mi away · World Cup menu specials</p>
-        </div>
-        <div class="venue-badge">Open</div>
+      <!-- QUICK REACTIONS -->
+      <div class="chat-reactions">
+        <button class="reaction-btn" onclick="sendReaction('⚽')">⚽</button>
+        <button class="reaction-btn" onclick="sendReaction('🔥')">🔥</button>
+        <button class="reaction-btn" onclick="sendReaction('😱')">😱</button>
+        <button class="reaction-btn" onclick="sendReaction('💀')">💀</button>
+        <button class="reaction-btn" onclick="sendReaction('👑')">👑</button>
+        <button class="reaction-btn" onclick="sendReaction('🙌')">🙌</button>
       </div>
 
-      <div class="venue-card">
-        <div class="venue-icon">🎉</div>
-        <div class="venue-info">
-          <h4>The Fox &amp; Hound</h4>
-          <p>2.2 mi away · Private rooms available</p>
-        </div>
-        <div class="venue-badge featured">⭐ Featured</div>
+      <!-- INPUT -->
+      <div class="chat-input-row">
+        <input class="chat-input" id="chat-input" type="text" placeholder="Drop your take... 👀" maxlength="120"
+          onkeydown="if(event.key==='Enter') sendMessage()">
+        <button class="chat-send" onclick="sendMessage()">Send ➤</button>
       </div>
     </div>
-  </div>
 
-  <!-- TRAVEL TAB (PREMIUM) -->
-  <div id="tab-travel" class="tab-content">
-    <div class="premium-locked">
-      <div class="blurred-content">
-        <div class="section-card">
-          <div class="section-title">Host City Guide</div>
-          <div class="travel-city">
-            <div class="city-flag">🇺🇸</div>
-            <div class="city-info"><h4>New York / New Jersey</h4><p>MetLife Stadium · Final venue</p></div>
-            <div class="city-matches">8 <span>matches</span></div>
+    <!-- SURVIVOR ONLY CHAT - PREMIUM -->
+    <div class="premium-locked" style="margin-top:14px;">
+      <div class="blurred">
+        <div class="card">
+          <div class="chat-header">
+            <div class="chat-header-left">
+              <div class="chat-live-dot" style="background:var(--gold);"></div>
+              <div>
+                <div class="chat-title">💀 Survivors Only</div>
+                <div class="chat-subtitle">Exclusive chat — still-alive players only</div>
+              </div>
+            </div>
           </div>
-          <div class="travel-city">
-            <div class="city-flag">🇲🇽</div>
-            <div class="city-info"><h4>Mexico City</h4><p>Estadio Azteca · Opening match</p></div>
-            <div class="city-matches">5 <span>matches</span></div>
-          </div>
-          <div class="travel-city">
-            <div class="city-flag">🇺🇸</div>
-            <div class="city-info"><h4>Los Angeles</h4><p>SoFi Stadium · Group &amp; Knockouts</p></div>
-            <div class="city-matches">7 <span>matches</span></div>
-          </div>
-          <div class="travel-city">
-            <div class="city-flag">🇨🇦</div>
-            <div class="city-info"><h4>Toronto</h4><p>BMO Field · Group stage</p></div>
-            <div class="city-matches">4 <span>matches</span></div>
+          <div style="padding:14px;">
+            <div class="chat-msg other">
+              <div class="msg-avatar">🏆</div>
+              <div class="msg-body">
+                <div class="msg-name">Survivor_22 <span class="msg-flag">🇩🇪</span></div>
+                <div class="msg-text">Don't pick Spain yet, save them for Round 4 trust me 🤫</div>
+                <div class="msg-time">5m ago</div>
+              </div>
+            </div>
+            <div class="chat-msg other">
+              <div class="msg-avatar">💎</div>
+              <div class="msg-body">
+                <div class="msg-name">LastStanding <span class="msg-flag">🇧🇷</span></div>
+                <div class="msg-text">Who's going Germany tonight? Stats looking good 📊</div>
+                <div class="msg-time">2m ago</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <div class="lock-overlay">
-        <div class="lock-icon-big">🔒</div>
-        <h3>Premium Feature</h3>
-        <p>Get full travel guides, visa info, hotel deals &amp; transport tips for all 16 host cities</p>
-        <button class="unlock-btn" onclick="openModal()">Unlock for $2.99</button>
+        <div class="lock-icon-big">💀</div>
+        <h3>Survivors Only Chat</h3>
+        <p>Exclusive hints & strategy from players still alive in the game. Premium only.</p>
+        <button class="unlock-btn" onclick="openModal()">Unlock Premium</button>
       </div>
     </div>
+
   </div>
 
 </div>
 
-<!-- PREMIUM MODAL -->
+<!-- PREMIUM MODAL - REDESIGNED -->
 <div class="modal-overlay" id="modal">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
-    <div style="font-size:40px; margin-bottom:10px;">⭐</div>
+    <div style="font-size:40px; margin-bottom:8px;">⭐</div>
     <h2>Go Premium</h2>
-    <p>Unlock the full World Cup experience for the entire tournament</p>
+    <p>Unlock the full WorldCup Companion experience</p>
 
-    <div class="plan-cards">
-      <div class="plan-card selected" onclick="selectPlan(this)">
-        <div class="price">$2.99</div>
-        <div class="period">per month</div>
+    <!-- SAVINGS CALLOUT -->
+    <div class="savings-banner">
+      🔥 Tournament plan saves you $1.97 — best deal by far!
+    </div>
+
+    <div class="plan-row">
+      <!-- MONTHLY - plain, clearly inferior -->
+      <div class="plan-card monthly">
+        <div class="plan-price">$2.99</div>
+        <div class="plan-period">per month</div>
         <div class="plan-name">Monthly</div>
       </div>
-      <div class="plan-card" onclick="selectPlan(this)">
-        <div class="price">$7.99</div>
-        <div class="period">full tournament</div>
-        <div class="plan-name">Best Value 🔥</div>
+
+      <!-- TOURNAMENT - obvious winner -->
+      <div class="plan-card tournament">
+        <div class="best-value-ribbon">🏆 Best Value</div>
+        <div class="plan-price">$7.99</div>
+        <div class="plan-period">entire tournament · one payment</div>
+        <div class="plan-name">Full Tournament</div>
+        <div class="tournament-perks">✓ 39 days · No renewal · Best deal</div>
       </div>
     </div>
 
     <ul class="features-list">
-      <li>Match Predictor &amp; Leaderboard</li>
-      <li>Full Travel Guide (16 host cities)</li>
-      <li>Visa &amp; transport info</li>
-      <li>Hotel &amp; flight affiliate deals</li>
-      <li>AI match analysis &amp; insights</li>
+      <li>Private Friend Leagues</li>
+      <li>Full 104-match schedule</li>
+      <li>Live scores & match alerts</li>
+      <li>Travel guide — 16 host cities</li>
+      <li>Advanced leaderboard stats</li>
       <li>Ad-free experience</li>
     </ul>
 
     <button class="modal-cta">🔓 Unlock Premium Now</button>
+    <div class="modal-footer-note">Cancel anytime · Secure payment via Stripe</div>
   </div>
 </div>
 
-<footer>
-  WorldCup Companion 2026 · Not affiliated with FIFA · Built for fans, by fans
-</footer>
+<div class="toast" id="toast">Done! 🔥</div>
+
+<footer>WorldCup Companion 2026 · Survivor Edition · Not affiliated with FIFA · For entertainment only</footer>
 
 <script>
-  // TAB SWITCHING
-  function switchTab(tab) {
-    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('tab-' + tab).classList.add('active');
-    event.currentTarget.classList.add('active');
-  }
+function switchTab(tab, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  btn.classList.add('active');
+}
 
-  // MODAL
-  function openModal() {
-    document.getElementById('modal').classList.add('open');
-  }
-  function closeModal() {
-    document.getElementById('modal').classList.remove('open');
-  }
-  document.getElementById('modal').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
-  });
+function updateCountdown() {
+  const target = new Date('2026-06-11T19:00:00Z');
+  const diff = target - new Date();
+  if (diff <= 0) return;
+  const d = Math.floor(diff/86400000);
+  const h = Math.floor((diff%86400000)/3600000);
+  const m = Math.floor((diff%3600000)/60000);
+  const s = Math.floor((diff%60000)/1000);
+  document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
 
-  function selectPlan(el) {
-    document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('selected'));
-    el.classList.add('selected');
-  }
+function openModal() { document.getElementById('modal').classList.add('open'); }
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+document.getElementById('modal').addEventListener('click', e => { if (e.target === document.getElementById('modal')) closeModal(); });
 
-  // COUNTDOWN TO JUNE 11 2026
-  function updateCountdown() {
-    const target = new Date('2026-06-11T19:00:00Z');
-    const now = new Date();
-    const diff = target - now;
-    if (diff <= 0) {
-      document.getElementById('cd-days').textContent = '00';
-      document.getElementById('cd-hours').textContent = '00';
-      document.getElementById('cd-mins').textContent = '00';
-      document.getElementById('cd-secs').textContent = '00';
-      return;
-    }
-    const days = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    const mins = Math.floor((diff % 3600000) / 60000);
-    const secs = Math.floor((diff % 60000) / 1000);
-    document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
-    document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
-    document.getElementById('cd-mins').textContent = String(mins).padStart(2,'0');
-    document.getElementById('cd-secs').textContent = String(secs).padStart(2,'0');
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+function copyLink() {
+  navigator.clipboard?.writeText('https://wccompanion.app/join/YOURCODE').catch(()=>{});
+  showToast('Link Copied! Share with your friends 🔥');
+}
 
-  // PREDICT BUTTONS
-  document.querySelectorAll('.predict-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const siblings = this.parentElement.querySelectorAll('.predict-btn');
-      siblings.forEach(s => s.classList.remove('selected'));
-      this.classList.add('selected');
-    });
-  });
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// Live registration count animation
+let count = 1204;
+setInterval(() => {
+  count += Math.floor(Math.random() * 2);
+  document.getElementById('reg-count').textContent = count.toLocaleString();
+  document.getElementById('surv-num').textContent = count.toLocaleString();
+}, 5000);
+
+// CHAT
+const botMessages = [
+  {avatar:'🦁', name:'FootballKing_NG', flag:'🇳🇬', text:'Argentina is the dark horse this tournament 🤫'},
+  {avatar:'⚡', name:'SoccerPro_BR', flag:'🇧🇷', text:'Brazil fans rise up!! 🇧🇷🔥'},
+  {avatar:'🎯', name:'TacticsGuru_UK', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', text:'Save your strong teams for the knockouts, trust the process 📊'},
+  {avatar:'🌟', name:'GoalMachine_DE', flag:'🇩🇪', text:'Germany looking dangerous this year, just saying 👀'},
+  {avatar:'🔥', name:'FutbolFan_MX', flag:'🇲🇽', text:'Mexico on home soil?? They WILL deliver 🙌'},
+  {avatar:'💫', name:'WCFanatic_NG', flag:'🇳🇬', text:'Who else staying up all night for these matches?? 😅'},
+];
+let botIndex = 0;
+
+function addMessage(avatar, name, flag, text, isMe = false) {
+  const box = document.getElementById('chat-messages');
+  if (!box) return;
+  const div = document.createElement('div');
+  div.className = 'chat-msg' + (isMe ? ' me' : '');
+  div.innerHTML = `
+    <div class="msg-avatar">${avatar}</div>
+    <div class="msg-body">
+      ${!isMe ? `<div class="msg-name">${name} <span class="msg-flag">${flag}</span></div>` : ''}
+      <div class="msg-text">${text}</div>
+      <div class="msg-time">just now</div>
+    </div>`;
+  box.appendChild(div);
+  box.scrollTop = box.scrollHeight;
+}
+
+function sendMessage() {
+  const input = document.getElementById('chat-input');
+  if (!input || !input.value.trim()) return;
+  addMessage('👤', 'You', '', input.value.trim(), true);
+  input.value = '';
+  // Bot reply after delay
+  setTimeout(() => {
+    const bot = botMessages[botIndex % botMessages.length];
+    botIndex++;
+    addMessage(bot.avatar, bot.name, bot.flag, bot.text);
+  }, 1500);
+}
+
+function sendReaction(emoji) {
+  addMessage('👤', 'You', '', emoji, true);
+}
+
+// Auto bot messages every 20s
+setInterval(() => {
+  const bot = botMessages[botIndex % botMessages.length];
+  botIndex++;
+  addMessage(bot.avatar, bot.name, bot.flag, bot.text);
+}, 20000);
 </script>
 
+<!-- FIREBASE AUTH -->
+<script type="module">
+  import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import {
+    getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+    GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut, updateProfile
+  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { getFirestore, doc, setDoc, getDoc }
+    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-</body></html>
+  const firebaseConfig = {
+    apiKey: "AIzaSyA_WYXMJ7sFqFmegXO2vgLtoY_AgypADWo",
+    authDomain: "worldcup-companion-7c9d0.firebaseapp.com",
+    projectId: "worldcup-companion-7c9d0",
+    storageBucket: "worldcup-companion-7c9d0.firebasestorage.app",
+    messagingSenderId: "617334575609",
+    appId: "1:617334575609:web:602b476a67d8c16c10ad28"
+  };
+
+  const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+  const provider = new GoogleAuthProvider();
+
+  // Auth state listener
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      // Hide auth overlay, show user badge
+      document.getElementById('auth-overlay').classList.add('hidden');
+      document.getElementById('login-trigger').style.display = 'none';
+      document.getElementById('user-badge').style.display = 'flex';
+
+      // Get username from Firestore
+      const userDoc = await getDoc(doc(db, 'users', user.uid));
+      const username = userDoc.exists() ? userDoc.data().username : user.displayName || 'Player';
+      document.getElementById('user-display-name').textContent = username;
+      window.currentUser = { uid: user.uid, username, email: user.email };
+
+      // Update leaderboard "you" section
+      const youEl = document.querySelector('.lb-you h4') || document.querySelector('.lb-you div[style]');
+      if (youEl) youEl.textContent = username + ' · #247';
+
+    } else {
+      // Show login button, hide badge
+      document.getElementById('auth-overlay').classList.remove('hidden');
+      document.getElementById('login-trigger').style.display = 'block';
+      document.getElementById('user-badge').style.display = 'none';
+      window.currentUser = null;
+    }
+  });
+
+  // Save user to Firestore
+  async function saveUser(uid, username, email) {
+    await setDoc(doc(db, 'users', uid), {
+      username, email,
+      joinedAt: new Date().toISOString(),
+      points: 0, roundsSurvived: 0, picks: []
+    }, { merge: true });
+  }
+
+  function showError(msg) {
+    const el = document.getElementById('auth-error');
+    el.textContent = msg;
+    el.classList.add('show');
+  }
+
+  function clearError() {
+    document.getElementById('auth-error').classList.remove('show');
+  }
+
+  // SIGNUP
+  window.doSignup = async function() {
+    clearError();
+    const username = document.getElementById('signup-username').value.trim();
+    const email = document.getElementById('signup-email').value.trim();
+    const password = document.getElementById('signup-password').value;
+    if (!username) return showError('Please enter a username');
+    if (username.length < 3) return showError('Username must be at least 3 characters');
+    if (!email) return showError('Please enter your email');
+    if (password.length < 6) return showError('Password must be at least 6 characters');
+    try {
+      const cred = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(cred.user, { displayName: username });
+      await saveUser(cred.user.uid, username, email);
+      showToast('Welcome to WorldCup Companion! 🔥');
+    } catch(e) {
+      showError(e.message.replace('Firebase: ','').replace(/\(auth.*\)/,''));
+    }
+  };
+
+  // LOGIN
+  window.doLogin = async function() {
+    clearError();
+    const email = document.getElementById('login-email').value.trim();
+    const password = document.getElementById('login-password').value;
+    if (!email || !password) return showError('Please fill in all fields');
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      showToast('Welcome back! 🔥');
+    } catch(e) {
+      showError('Invalid email or password. Try again.');
+    }
+  };
+
+  // GOOGLE
+  window.doGoogle = async function() {
+    clearError();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      const username = user.displayName || 'Fan_' + Math.floor(Math.random()*9999);
+      await saveUser(user.uid, username, user.email);
+      showToast('Logged in with Google! 🔥');
+    } catch(e) {
+      showError('Google login failed. Try email instead.');
+    }
+  };
+
+  // LOGOUT
+  window.showProfile = async function() {
+    if (!window.currentUser) return;
+    if (confirm('Log out of WorldCup Companion?')) {
+      await signOut(auth);
+      showToast('Logged out. See you next match! 👋');
+    }
+  };
+
+  // SWITCH AUTH TABS
+  window.switchAuth = function(tab, btn) {
+    clearError();
+    document.querySelectorAll('.auth-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('auth-signup').style.display = tab === 'signup' ? 'block' : 'none';
+    document.getElementById('auth-login').style.display = tab === 'login' ? 'block' : 'none';
+  };
+</script>
+
+<!-- FIREBASE REAL-TIME CHAT -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, onSnapshot, orderBy, query, serverTimestamp, limit }
+    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyA_WYXMJ7sFqFmegXO2vgLtoY_AgypADWo",
+    authDomain: "worldcup-companion-7c9d0.firebaseapp.com",
+    projectId: "worldcup-companion-7c9d0",
+    storageBucket: "worldcup-companion-7c9d0.firebasestorage.app",
+    messagingSenderId: "617334575609",
+    appId: "1:617334575609:web:602b476a67d8c16c10ad28"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const messagesRef = collection(db, "global-chat");
+
+  // Random guest identity per session
+  const emojis = ['🦁','⚡','🔥','🎯','🌟','💫','🏆','💎','🎪','🚀','🐉','🦅'];
+  const flags  = ['🇳🇬','🇧🇷','🇲🇽','🏴󠁧󠁢󠁥󠁮󠁧󠁿','🇩🇪','🇫🇷','🇪🇸','🇦🇷','🇵🇹','🇺🇸','🇿🇦','🇨🇦'];
+  const names  = ['FootballFan','SurvivorPro','GoalMachine','FanZone','MatchDay','KickOff','UltraFan'];
+  const myAvatar = emojis[Math.floor(Math.random()*emojis.length)];
+  const myFlag   = flags[Math.floor(Math.random()*flags.length)];
+  const myName   = names[Math.floor(Math.random()*names.length)] + '_' + Math.floor(Math.random()*9999);
+
+  let chatCleared = false;
+
+  // Listen for real messages in real-time
+  const q = query(messagesRef, orderBy("timestamp","asc"), limit(60));
+  onSnapshot(q, (snapshot) => {
+    snapshot.docChanges().forEach((change) => {
+      if (change.type === "added") {
+        const d = change.doc.data();
+        const isMe = d.name === myName;
+        renderMsg(d.avatar, d.name, d.flag, d.text, isMe);
+      }
+    });
+  });
+
+  // Send message to Firestore
+  async function sendToFirebase(text) {
+    if (!text.trim()) return;
+    try {
+      await addDoc(messagesRef, {
+        avatar: myAvatar,
+        name: myName,
+        flag: myFlag,
+        text: text.trim(),
+        timestamp: serverTimestamp()
+      });
+    } catch(e) {
+      console.error("Send failed:", e);
+    }
+  }
+
+  // Render message in UI
+  function renderMsg(avatar, name, flag, text, isMe) {
+    const box = document.getElementById('chat-messages');
+    if (!box) return;
+    if (!chatCleared) {
+      box.innerHTML = '';
+      chatCleared = true;
+    }
+    const div = document.createElement('div');
+    div.className = 'chat-msg' + (isMe ? ' me' : '');
+    div.innerHTML = `
+      <div class="msg-avatar">${avatar}</div>
+      <div class="msg-body">
+        ${!isMe ? `<div class="msg-name">${name} <span class="msg-flag">${flag}</span></div>` : ''}
+        <div class="msg-text">${text}</div>
+        <div class="msg-time">just now</div>
+      </div>`;
+    box.appendChild(div);
+    box.scrollTop = box.scrollHeight;
+  }
+
+  // Override global send functions
+  window.sendMessage = function() {
+    const input = document.getElementById('chat-input');
+    if (!input || !input.value.trim()) return;
+    sendToFirebase(input.value.trim());
+    input.value = '';
+  };
+
+  window.sendReaction = function(emoji) {
+    sendToFirebase(emoji);
+  };
+
+  // Update subtitle to show live status
+  setTimeout(() => {
+    const sub = document.querySelector('.chat-subtitle');
+    if (sub) sub.textContent = '🟢 Live · Real fans chatting now · You are ' + myName;
+  }, 1000);
+</script>
+</body>
+</html>
